@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewData["Title"] = "Statistics";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container text-center">
+    <div class="row">
+        <div class="col-12">
+            <h1>Statistics</h1>
+        </div>
+    </div>
+    <div class="row border">
+        <div class="col-6 border">
+            <h3 class="m-2 text-center">Last 5 years:</h3>
+            <table class="table">
+                <thead>
+                <th scope="col">Year</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Average per month</th>
+                </thead>
+                <tbody>
+                    @for (int i = 1; i <= 5; i++)
+                    {
+                        <tr>
+                            <td>@(ViewBag.Year - i)</td>
+                            <td>@ViewBag.LastInfo[i].Key</td>
+                            <td>@ViewBag.LastInfo[i].Value</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <div class="container justify-content-center">
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <h3 class="text-center">Current year: @ViewBag.Year</h3>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <p class="m-1">Amount: @ViewBag.LastInfo[0].Key</p>
+                        <p class="m-1">Average per month:@ViewBag.LastInfo[0].Value</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row m-4">
+        <canvas id="myChart"></canvas>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/Chart.js/chart.min.js"></script>
+    <script>
+
+        const config = {
+            type: 'line',
+            data: {
+                labels:@ViewBag.Ye,
+                datasets: [{
+                    label: 'Readed books',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: @ViewBag.Ct,
+                }]
+
+            },
+            options: {}
+        };
+
+        var myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    </script>
+
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

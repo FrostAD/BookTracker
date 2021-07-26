@@ -1,0 +1,25 @@
+﻿@model LibraryR.Models.StatusType
+
+@{
+    ViewData["Title"] = "DetailsStatus";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>DetailsStatus</h1>
+
+<div>
+    <h4>StatusType</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="EditStatus" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="IndexStatus">Back to List</a>
+</div>

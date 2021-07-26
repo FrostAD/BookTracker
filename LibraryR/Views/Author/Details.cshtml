@@ -1,0 +1,81 @@
+﻿@model LibraryR.Models.Author
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Author</h4>
+    <hr />
+    @if (ViewBag.Success is not null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @ViewBag.Success
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.FirstName)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.FirstName)
+    </dd>
+    @if (Model.LastName is not null)
+    {
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+    }
+    @if (Model.BornYear is not null)
+    {
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BornYear)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BornYear)
+        </dd>
+    }
+
+    @if (Model.Books.Count > 0)
+    {
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Books)
+    </dt>
+        var last = Model.Books.Last();
+        <dd class="col-sm-10">
+
+            @foreach (Book item in Model.Books)
+            {
+                if (item == last)
+                {
+                    <a asp-controller="Book" asp-action="Details" asp-route-id="@item.Id">@item.Title</a>
+            }
+            else
+            {
+                <a asp-controller="Book" asp-action="Details" asp-route-id="@item.Id">@item.Title, </a>
+            }
+
+        }
+            </dd>
+
+        }
+
+</dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+@section Scripts
+{
+    <script>$('.alert').alert()</script>
+}

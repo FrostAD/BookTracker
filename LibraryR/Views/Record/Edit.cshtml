@@ -1,0 +1,48 @@
+﻿@model LibraryR.ViewModels.RecordVM
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Record</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Record.BookId" />
+            <input type="hidden" asp-for="Record.UserId" />
+            <div class="form-group">
+    <label>Select book:</label>
+    <select name="ajaxSelect2RecordEditBook" class="form-control" id="ajaxSelect2RecordEditBook" asp-items="@Model.BookDropDown">
+    </select>
+</div>
+            <div class="form-group">
+                <label asp-for="Record.RecordDate" class="control-label"></label>
+                <input asp-for="Record.RecordDate" class="form-control" />
+                <span asp-validation-for="Record.RecordDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+    <label>Set status:</label>
+    <select name="ajaxSelect2RecordEditStatus" class="form-control" id="ajaxSelect2RecordEditStatus" asp-items="@Model.StatusDropDown">
+    </select>
+</div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script src="~/lib/select2/js/select2.full.min.js"></script>
+    <script src="~/js/select2.js"></script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

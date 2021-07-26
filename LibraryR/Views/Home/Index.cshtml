@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+    <div class="row mt-5">
+        <div class="col text-center mt-5">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <h1 class="display-4">You have read @ViewBag.RecordCount books in @ViewBag.Year</h1>
+                <a class="btn btn-outline-dark mt-4" href="/Record/Create" role="button">Add new record</a>
+            }
+            else
+            {
+                <h1 class="display-4">Register and keep track of your reading progress.</h1>
+                <a class="btn btn-outline-dark" href="/Identity/Account/Register" role="button">Register</a>
+            }
+        </div>
+    </div>
+
