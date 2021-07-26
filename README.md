@@ -1,4 +1,12 @@
-# LibraryTracker(doc is in progress)
+# LibraryTracker
+## Used technologies
+#### ASP.NET Core 5 - Framework
+#### MS SQL SERVER - DB
+#### HTML, CSS и Bootstrap – structure,styling and responsive design, JS – alerts(for success or failure) of operation, JQuery и AJAX – to retrieve records from DB.
+#### Additionally used libraries:
+##### Select2, DataTables, Moment.js
+
+
 ## Home page for guests
 ![indexPage](https://user-images.githubusercontent.com/21689292/127044156-6fc937d6-1c58-4ee0-a799-f0542a48cfdc.png)
 ## Home page for logged in user
