@@ -1,4 +1,4 @@
-# LibraryTracker
+# Book Tracker
 ## Used technologies
 #### ASP.NET Core 5 - Framework
 #### MS SQL SERVER - DB
